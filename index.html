@@ -159,7 +159,56 @@
       .mobile-quick { display:flex; }
       footer { padding-bottom: 100px; }
     }
-  </style>
+  
+/* Continuous section scrolling and stronger section identity */
+body.section-tabs section[id], section[id] {display:block!important;visibility:visible!important;}
+section[id][hidden] {display:block!important;}
+html {scroll-padding-top:145px;}
+section[id] {scroll-margin-top:145px;}
+#top {background-color:#103c5c;}
+#supplies {background:linear-gradient(180deg,#e7f7f4,#f6fcfb);}
+#badges {background:linear-gradient(180deg,#fff8ec,#f9fcff);}
+#process {background:linear-gradient(180deg,#e8f5ff,#f8fcff);}
+#agenda {background:linear-gradient(180deg,#f1f4fc,#f8faff);}
+#issues {background:linear-gradient(180deg,#f4effb,#faf8fd);}
+#facts {background:linear-gradient(180deg,#e8edf5,#f5f8fc);}
+#columns {background:linear-gradient(180deg,#f6f0e6,#fffcf7);}
+#map {background:linear-gradient(180deg,#e9f6ed,#f7fcf8);}
+#supplies .section-tag {background:#c9eee4;color:#126b5b;}
+#badges .section-tag {background:#ffdfad;color:#915414;}
+#process .section-tag {background:#c9e8ff;color:#165d91;}
+#agenda .section-tag {background:#dce5ff;color:#284d91;}
+#issues .section-tag {background:#e8d9fa;color:#633d91;}
+#facts .section-tag {background:#173c60;color:#fff;}
+#columns .section-tag {background:#e9d9bd;color:#664a26;}
+#map .section-tag {background:#cfecd6;color:#286b43;}
+#facts .fact-card {border:1px solid #b7c9d9;box-shadow:0 16px 30px rgba(16,40,64,.12);}
+#issues .issue-card {border-left-color:#8b61bd;}
+#supplies .info-icon {background:linear-gradient(135deg,#168f7d,#49b5a2);}
+#agenda .agenda-head {background:linear-gradient(135deg,#142d58,#234c80);}
+#columns .column-card {border-color:#e4d5c0;}
+.site-header .nav a[aria-current="page"] {background:#fff;color:#103f6c;box-shadow:0 5px 0 #f0b749,0 6px 16px rgba(0,0,0,.19);}
+@media(max-width:760px) {
+ html {scroll-padding-top:165px;}
+ section[id] {scroll-margin-top:165px;}
+ body {font-size:16px;}
+ .brand-link strong, .brand strong {font-size:24px;}
+ .nav a {font-size:14px;}
+ .hero-card h1 {font-size:39px;}
+ .hero-date {font-size:26px;}
+ .hero-place {font-size:20px;}
+ .hero-sub,.section .lead,.side-card span,.info-card li,.agenda-body p,.issue-block p,.column-body p,.map-body p,.fact-sub {font-size:15.5px;}
+ .badge-swatch {font-size:23px;}
+ .badge-content h3 {font-size:23px;}
+ .agenda-no {font-size:21px;}
+ .agenda-title {font-size:23px;}
+ .fact-number {font-size:28px;}
+ .fact-question-text {font-size:19px;}
+ .fact-answer-badge {font-size:21px;}
+ .fact-note {font-size:15px;}
+}
+
+</style>
 <style>
 /* 2026-10-13 infographic redesign: zero accordion clicking required */
 body{font-size:19px;line-height:1.68;background:#f5f9fc}
@@ -568,64 +617,56 @@ body.section-tabs .header-inner { min-width:0; }
   d.addEventListener('click',(event)=>{if(event.target===d)d.close()});
 })();</script>
 <script>
-(function () {
-  'use strict';
-  const pages = ['top','badges','documents','process','agenda','issues','facts','columns','map'];
-  const pagesSet = new Set(pages);
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = [...document.querySelectorAll('.site-header .nav a[href^="#"]')];
-  const internalLinks = [...document.querySelectorAll('a[href^="#"]')];
-  const closing = document.getElementById('closing-note');
-  const title = '송림3지구 임시총회 안내';
-  const status = document.createElement('span');
-  status.className = 'visually-hidden-page-status';
-  status.setAttribute('role','status');
-  status.setAttribute('aria-live','polite');
-  document.querySelector('.site-header .header-inner').appendChild(status);
-  // Explicitly mark switchable views, without changing any of the original information.
-  sections.forEach(el => el.classList.add('tab-page'));
-  const tabName = Object.fromEntries(navLinks.map(a => [a.getAttribute('href').slice(1),a.textContent.trim()]));
-  function selectedFromUrl() {
-    let hash = location.hash.slice(1);
-    try { hash = decodeURIComponent(hash); } catch (err) { hash=''; }
-    return pagesSet.has(hash) ? hash : 'top';
+(() => {
+ const pages=['top','supplies','badges','process','agenda','issues','facts','columns','map'];
+ const links=[...document.querySelectorAll('.site-header .nav a[href^="#"]')];
+ const sections=pages.map(id=>document.getElementById(id)).filter(Boolean);
+ const brand=document.querySelector('.brand-home, .brand-link, .brand');
+ let selected='';
+ let navLockUntil=0;
+ document.body.classList.remove('section-tabs');
+ document.querySelectorAll('section[id]').forEach(el=>{el.hidden=false;el.classList.remove('tab-page')});
+ function activate(id){
+  if(!pages.includes(id)||id===selected)return;
+  selected=id;
+  links.forEach(a=>{if(a.getAttribute('href')==='#'+id)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
+  const active=links.find(a=>a.getAttribute('href')==='#'+id);
+  if(active && active.parentElement){
+   const nav=active.parentElement;
+   const left=active.offsetLeft-nav.offsetLeft-(nav.clientWidth-active.offsetWidth)/2;
+   nav.scrollTo({left:Math.max(0,left),behavior:'smooth'});
   }
-  function showPage(page, scrollToTop) {
-    if (!pagesSet.has(page)) page='top';
-    document.body.classList.add('section-tabs');
-    sections.forEach(el => {
-      el.hidden = (el.id !== page && !(el === closing && page === 'facts'));
-    });
-    navLinks.forEach(el => {
-      const active = el.getAttribute('href') === '#' + page;
-      if (active) el.setAttribute('aria-current','page');
-      else el.removeAttribute('aria-current');
-    });
-    const label = tabName[page] || '총회안내';
-    status.textContent = label + ' 화면이 표시되었습니다.';
-    document.title = label === '총회안내' ? title : label + ' | ' + title;
-    if (scrollToTop) window.scrollTo({top:0,left:0,behavior:'instant'});
-    const activeNav=navLinks.find(el => el.getAttribute('href') === '#' + page);
-    if (activeNav) {
-      const nav=activeNav.parentElement;
-      const left=activeNav.offsetLeft - nav.offsetLeft;
-      const target=left - (nav.clientWidth-activeNav.offsetWidth)/2;
-      nav.scrollLeft=Math.max(0,target);
-    }
-  }
-  internalLinks.forEach(a => {
-    const key = a.getAttribute('href').slice(1);
-    if (!pagesSet.has(key)) return;
-    a.addEventListener('click', event => {
-      if(event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-      event.preventDefault();
-      if (location.hash !== '#' + key) history.pushState({section:key},'', '#' + key);
-      showPage(key,true);
-    });
-  });
-  window.addEventListener('popstate',()=>showPage(selectedFromUrl(),true));
-  window.addEventListener('hashchange',()=>showPage(selectedFromUrl(),true));
-  showPage(selectedFromUrl(),true);
+ }
+ function detect(){
+  if(Date.now()<navLockUntil)return;
+  const header=document.querySelector('.site-header');
+  const offset=(header?header.getBoundingClientRect().height:0)+55;
+  let current='top';
+  for(const sec of sections)if(sec.getBoundingClientRect().top<=offset)current=sec.id;
+  if(window.innerHeight+window.scrollY>=document.documentElement.scrollHeight-10)current='map';
+  activate(current);
+ }
+ links.forEach(link=>link.addEventListener('click',e=>{
+  const id=link.getAttribute('href').slice(1);
+  const sec=document.getElementById(id);
+  if(!sec)return;
+  e.preventDefault();navLockUntil=Date.now()+900;
+  activate(id);sec.scrollIntoView({behavior:'smooth',block:'start'});
+  history.replaceState(null,'','#'+id);
+ }));
+ if(brand)brand.addEventListener('click',e=>{
+  if(e.target.closest('a') && e.target.closest('a')!==brand)return;
+  e.preventDefault();navLockUntil=Date.now()+900;activate('top');
+  window.scrollTo({top:0,behavior:'smooth'});history.replaceState(null,'','#top');
+ });
+ let ticking=false;
+ window.addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(()=>{detect();ticking=false})}},{passive:true});
+ window.addEventListener('resize',detect);
+ window.addEventListener('hashchange',()=>{const id=location.hash.slice(1);if(pages.includes(id)){activate(id);document.getElementById(id).scrollIntoView({behavior:'smooth'})}});
+ const initial=location.hash.slice(1);
+ activate(pages.includes(initial)?initial:'top');
+ if(pages.includes(initial))requestAnimationFrame(()=>document.getElementById(initial).scrollIntoView());
+ else detect();
 })();
 </script>
 </body>
