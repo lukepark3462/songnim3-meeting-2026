@@ -304,7 +304,46 @@ html { scroll-padding-top: 110px; }
 }
 @media(max-width:360px){.agenda-number{min-width:63px;font-size:20px}.agenda-combined-body{padding:15px}}
 @media(prefers-reduced-motion:reduce){.site-header .nav a{transition:none}}
-</style></head>
+</style>
+<style>
+/* One visible information page at a time; all content remains visible without JS. */
+body.section-tabs section.tab-page[hidden] { display: none !important; }
+body.section-tabs main { min-height: min(58vh, 550px); }
+body.section-tabs main > section.section:not([hidden]) { padding-top: 48px; animation: show-view .19s ease-out; }
+body.section-tabs .hero:not([hidden]) { animation: show-view .20s ease-out; }
+body.section-tabs .site-header .nav a[aria-current="page"] {
+  background: linear-gradient(150deg,#ffffff,#e9f5ff);
+  color: #164a77;
+  border-color: rgba(255,255,255,.95);
+  box-shadow: inset 0 2px 0 rgba(255,255,255,.95),0 6px 16px rgba(7,34,62,.25);
+}
+body.section-tabs .site-header .nav a[aria-current="page"]::after {
+  content: ""; position:absolute; bottom:5px; left:17px; right:17px;
+  border-bottom: 2px solid #4c91cd;
+}
+body.section-tabs .site-header .nav a { position:relative; }
+/* Nine tabs must remain accessible and legible without covering content. */
+body.section-tabs .site-header .nav { min-width:0; max-width:100%; overflow-x:auto; scrollbar-width:thin; scrollbar-color:#a2cce9 transparent; }
+body.section-tabs .site-header .nav a { flex: 0 0 auto; }
+body.section-tabs .header-inner { min-width:0; }
+@media(max-width:1490px) {
+  body.section-tabs .header-inner { flex-direction:column;align-items:stretch; gap:9px; padding:12px 0; }
+  body.section-tabs .site-header .brand { flex:0 0 auto; }
+  body.section-tabs .site-header .nav { width:100%; justify-content:flex-start; }
+}
+@media(max-width:760px) {
+  body.section-tabs .site-header { position:sticky; top:0; }
+  body.section-tabs .header-inner { padding:11px 0 8px; }
+  body.section-tabs .site-header .brand span { display:none; }
+  body.section-tabs main > section.section:not([hidden]) { padding-top:32px; }
+  body.section-tabs .hero { padding:32px 0; }
+  body.section-tabs .site-header .nav { -webkit-overflow-scrolling:touch; }
+}
+@keyframes show-view { from { opacity:.45; transform:translateY(5px) } to { opacity:1; transform:none } }
+@media(prefers-reduced-motion:reduce) { body.section-tabs main > section.section:not([hidden]),body.section-tabs .hero:not([hidden]) { animation:none } }
+.visually-hidden-page-status { position:absolute; left:-10000px; width:1px; height:1px; overflow:hidden; }
+</style>
+</head>
 <body>
 <header class="site-header">
 <div class="wrap header-inner">
@@ -315,9 +354,11 @@ html { scroll-padding-top: 110px; }
 <nav aria-label="섹션 이동" class="nav">
 <a href="#top">총회안내</a>
 <a href="#badges">명찰안내</a>
+<a href="#documents">준비서류</a>
+<a href="#process">입장절차</a>
 <a href="#agenda">해임안건</a>
 <a href="#issues">주요 쟁점</a>
-<a href="#facts">팩트체크 10가지</a>
+<a href="#facts">팩트체크</a>
 <a href="#columns">칼럼</a>
 <a href="#map">오시는길</a>
 </nav>
@@ -525,5 +566,67 @@ html { scroll-padding-top: 110px; }
   });
   document.getElementById('column-close').addEventListener('click',()=>d.close());
   d.addEventListener('click',(event)=>{if(event.target===d)d.close()});
-})();</script></body>
+})();</script>
+<script>
+(function () {
+  'use strict';
+  const pages = ['top','badges','documents','process','agenda','issues','facts','columns','map'];
+  const pagesSet = new Set(pages);
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = [...document.querySelectorAll('.site-header .nav a[href^="#"]')];
+  const internalLinks = [...document.querySelectorAll('a[href^="#"]')];
+  const closing = document.getElementById('closing-note');
+  const title = '송림3지구 임시총회 안내';
+  const status = document.createElement('span');
+  status.className = 'visually-hidden-page-status';
+  status.setAttribute('role','status');
+  status.setAttribute('aria-live','polite');
+  document.querySelector('.site-header .header-inner').appendChild(status);
+  // Explicitly mark switchable views, without changing any of the original information.
+  sections.forEach(el => el.classList.add('tab-page'));
+  const tabName = Object.fromEntries(navLinks.map(a => [a.getAttribute('href').slice(1),a.textContent.trim()]));
+  function selectedFromUrl() {
+    let hash = location.hash.slice(1);
+    try { hash = decodeURIComponent(hash); } catch (err) { hash=''; }
+    return pagesSet.has(hash) ? hash : 'top';
+  }
+  function showPage(page, scrollToTop) {
+    if (!pagesSet.has(page)) page='top';
+    document.body.classList.add('section-tabs');
+    sections.forEach(el => {
+      el.hidden = (el.id !== page && !(el === closing && page === 'facts'));
+    });
+    navLinks.forEach(el => {
+      const active = el.getAttribute('href') === '#' + page;
+      if (active) el.setAttribute('aria-current','page');
+      else el.removeAttribute('aria-current');
+    });
+    const label = tabName[page] || '총회안내';
+    status.textContent = label + ' 화면이 표시되었습니다.';
+    document.title = label === '총회안내' ? title : label + ' | ' + title;
+    if (scrollToTop) window.scrollTo({top:0,left:0,behavior:'instant'});
+    const activeNav=navLinks.find(el => el.getAttribute('href') === '#' + page);
+    if (activeNav) {
+      const nav=activeNav.parentElement;
+      const left=activeNav.offsetLeft - nav.offsetLeft;
+      const target=left - (nav.clientWidth-activeNav.offsetWidth)/2;
+      nav.scrollLeft=Math.max(0,target);
+    }
+  }
+  internalLinks.forEach(a => {
+    const key = a.getAttribute('href').slice(1);
+    if (!pagesSet.has(key)) return;
+    a.addEventListener('click', event => {
+      if(event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      event.preventDefault();
+      if (location.hash !== '#' + key) history.pushState({section:key},'', '#' + key);
+      showPage(key,true);
+    });
+  });
+  window.addEventListener('popstate',()=>showPage(selectedFromUrl(),true));
+  window.addEventListener('hashchange',()=>showPage(selectedFromUrl(),true));
+  showPage(selectedFromUrl(),true);
+})();
+</script>
+</body>
 </html>
