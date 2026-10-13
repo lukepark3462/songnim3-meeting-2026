@@ -592,6 +592,37 @@ body{font-size:17px;line-height:1.65;background:#faf8f2;color:var(--page-ink)}
 .hero .hero-place-floor{display:inline-block;padding:8px 13px;border:2px solid #a9d4f9;border-radius:10px;background:#eaf5ff;color:#135a95;font-size:clamp(18px,2.7vw,23px);font-weight:900;white-space:nowrap}
 @media(max-width:420px){.hero .hero-place{gap:8px}.hero .hero-place-name{padding:9px 10px;font-size:clamp(16px,5vw,21px)}.hero .hero-place-floor{padding:7px 11px;font-size:18px}}
 </style>
+
+<style id="hero-feature-image">
+/* Show the same image as the OG share thumbnail at the very beginning of the page. */
+.hero.hero-image-first{padding:20px 0 54px;min-height:0;display:block;background:linear-gradient(180deg,#e6f0fa 0%,#f3f7fb 100%)}
+.hero.hero-image-first::before,.hero.hero-image-first::after{display:none!important}
+.hero.hero-image-first>.wrap{position:relative;z-index:1;width:min(1220px,calc(100% - 28px));max-width:1220px}
+.hero-sr-only{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;clip-path:inset(50%);margin:-1px;padding:0;border:0}
+.hero-banner-frame{border-radius:22px;overflow:hidden;border:1px solid rgba(16,58,98,.25);background:#153e63;box-shadow:0 24px 46px rgba(15,49,86,.21)}
+.hero-banner-frame .hero-share-banner{display:block;width:100%;height:auto;aspect-ratio:40 / 21;object-fit:contain;object-position:center}
+.hero-event-details{margin:18px auto 0;padding:20px 28px 24px;border-radius:20px;border:1px solid #c7d9e9;background:rgba(255,255,255,.97);box-shadow:0 13px 31px rgba(20,63,100,.11);max-width:1160px}
+.hero-date-row{display:flex;align-items:baseline;flex-wrap:wrap;gap:10px 16px;color:#193f64;font-weight:900;font-size:clamp(18px,2.3vw,26px);line-height:1.4}
+.hero-date-row .hero-mini-label{font-size:14px;color:#3f6286;background:#e6eff8;border-radius:7px;padding:6px 10px;white-space:nowrap}
+.hero-date-row>strong{font-weight:900;letter-spacing:-.03em}
+.hero-date-row .event-day,.hero-date-row .time-inline{display:inline-block;white-space:nowrap}
+.hero-event-details .hero-place{margin-top:14px;gap:10px}
+.hero-event-details .hero-sub{margin-top:12px}
+.hero-event-details .hero-important{margin-top:12px}
+.hero-event-details .hero-actions{margin-top:18px}
+@media(max-width:760px){
+  .hero.hero-image-first{padding:12px 0 36px;min-height:0}
+  .hero.hero-image-first>.wrap{width:calc(100% - 20px)}
+  .hero-banner-frame{border-radius:13px;box-shadow:0 10px 23px rgba(18,55,89,.16)}
+  .hero-event-details{margin-top:12px;padding:15px 14px 18px;border-radius:14px}
+  .hero-date-row{font-size:clamp(16px,4.65vw,21px);gap:8px}
+  .hero-date-row .hero-mini-label{font-size:12px;padding:4px 7px}
+  .hero-event-details .hero-place{margin-top:12px}
+  .hero-event-details .hero-sub{margin-top:10px;font-size:14px}
+  .hero-event-details .hero-important{margin-top:12px}
+  .hero-event-details .hero-actions{margin-top:16px}
+}
+</style>
 </head>
 <body>
 <header class="site-header">
@@ -613,16 +644,18 @@ body{font-size:17px;line-height:1.65;background:#faf8f2;color:var(--page-ink)}
 </nav>
 </div>
 </header>
-<section class="hero" id="top">
+<section class="hero hero-image-first" id="top">
 <div class="wrap">
-<div class="hero-card">
-<span class="eyebrow">2026년 송림3지구 조합임원 해임 임시총회</span>
-<h1 class="event-title">송림3지구 임시총회 안내</h1>
-<div class="hero-date"><span class="event-day">2026년 10월 16일(금)</span> <span class="time-inline">오후 7시 30분</span></div>
-<div class="hero-place"><strong class="hero-place-name">제물포구주민행복센터</strong><span class="hero-place-floor">3층 대강당</span></div>
-<div class="hero-sub">옛 동구주민행복센터 · 백병원 바로 옆</div>
-<div class="hero-important" role="note"><span class="hero-important-label">주요 사항</span><strong class="hero-important-text">천광교회 아닙니다.</strong></div>
-<div class="hero-actions"><a class="button primary" href="https://map.naver.com/p/search/%EC%9D%B8%EC%B2%9C%20%EC%A0%9C%EB%AC%BC%ED%8F%AC%EA%B5%AC%20%EC%97%BC%EC%A0%84%EB%A1%9C40%EB%B2%88%EA%B8%B8%2070" rel="noopener noreferrer" target="_blank">네이버 지도 열기 ↗</a><a class="button secondary" href="#documents">참석 준비물 확인</a></div>
+<h1 class="hero-sr-only">송림3지구 임시총회 안내</h1>
+<div class="hero-banner-frame">
+<img class="hero-share-banner" src="assets/og-meeting-20261013.jpg" width="1200" height="630" fetchpriority="high" decoding="async" alt="송림3지구 임시총회 안내 웹사이트. 2026년 10월 16일 금요일 오후 7시 30분, 제물포구주민행복센터 3층 대강당. 아파트 단지 배경의 안내 이미지."/>
+</div>
+<div class="hero-event-details">
+ <div class="hero-date-row"><span class="hero-mini-label">총회 일시</span><strong><span class="event-day">2026년 10월 16일(금)</span> <span class="time-inline">오후 7시 30분</span></strong></div>
+ <div class="hero-place"><strong class="hero-place-name">제물포구주민행복센터</strong><span class="hero-place-floor">3층 대강당</span></div>
+ <div class="hero-sub">옛 동구주민행복센터 · 백병원 바로 옆</div>
+ <div class="hero-important" role="note"><span class="hero-important-label">주요 사항</span><strong class="hero-important-text">천광교회 아닙니다.</strong></div>
+ <div class="hero-actions"><a class="button primary" href="https://map.naver.com/p/search/%EC%9D%B8%EC%B2%9C%20%EC%A0%9C%EB%AC%BC%ED%8F%AC%EA%B5%AC%20%EC%97%BC%EC%A0%84%EB%A1%9C40%EB%B2%88%EA%B8%B8%2070" rel="noopener noreferrer" target="_blank">네이버 지도 열기 ↗</a><a class="button secondary" href="#documents">참석 준비물 확인</a></div>
 </div>
 </div>
 </section>
