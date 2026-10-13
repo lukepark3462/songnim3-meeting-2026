@@ -649,6 +649,17 @@ body{font-size:17px;line-height:1.65;background:#faf8f2;color:var(--page-ink)}
 @media(max-width:950px){#documents .prep-cards{grid-template-columns:1fr 1fr}#documents .prep-cards-one{grid-template-columns:1fr}}
 @media(max-width:670px){#documents .prep-groups{gap:16px}#documents .prep-group{padding:17px 15px 18px;border-radius:17px}#documents .prep-group-head{gap:11px}#documents .prep-number{width:43px;height:43px;font-size:18px}#documents .prep-group-head h3{font-size:22px}#documents .prep-group-head p{font-size:14px}#documents .prep-cards,#documents .prep-cards-two{grid-template-columns:1fr}#documents .prep-card{padding:16px}#documents .prep-card h4{font-size:18px}#documents .prep-card strong{font-size:17px}#documents .prep-card p{font-size:15px}#documents .prep-notice{font-size:14px;padding:13px}}
 </style>
+
+<style id="process-step-inline-layout">
+#process .process-card{min-width:0}
+#process .process-card-heading{display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center;gap:12px;margin-bottom:15px;min-width:0}
+#process .process-card-heading .process-step{display:inline-flex;flex:0 0 42px;width:42px;height:42px;margin:0;align-items:center;justify-content:center}
+#process .process-card-heading h3{flex:1 1 auto;min-width:0;margin:0!important;font-size:clamp(18px,2vw,22px);line-height:1.25;letter-spacing:-.035em;word-break:keep-all}
+#process .process-card p{line-height:1.65;word-break:keep-all}
+#process .process-card p strong{color:#185d89;font-weight:900}
+@media(max-width:980px){#process .process-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){#process .process-grid{grid-template-columns:1fr}#process .process-card-heading{gap:12px}#process .process-card-heading h3{font-size:21px}}
+</style>
 </head>
 <body>
 <header class="site-header">
@@ -763,10 +774,10 @@ body{font-size:17px;line-height:1.65;background:#faf8f2;color:var(--page-ink)}
 </div>
 </div>
 <div class="process-grid">
-<article class="card process-card"><div class="process-step">1</div><h3>1층 접수</h3><p>신분 확인과 참석 유형을 먼저 확인합니다.</p></article>
-<article class="card process-card"><div class="process-step">2</div><h3>명찰 수령</h3><p>서면결의 여부와 참관 여부에 따라 초록색·주황색·하얀색 명찰을 받습니다.</p></article>
-<article class="card process-card"><div class="process-step">3</div><h3>3층 이동</h3><p>진행 안내에 따라 총회장 또는 참관석으로 이동합니다.</p></article>
-<article class="card process-card"><div class="process-step">4</div><h3>의결 또는 참관</h3><p>의결권자는 안건별 의사를 표시하고, 참관인은 별도 좌석에서 참관합니다.</p></article>
+<article class="card process-card"><div class="process-card-heading"><span class="process-step">1</span><h3>1층 접수</h3></div><p>신분 확인과 참석 유형을 먼저 확인합니다.</p></article>
+<article class="card process-card"><div class="process-card-heading"><span class="process-step">2</span><h3>명찰 수령</h3></div><p>서면결의 여부와 참관 여부에 따라 초록색·주황색·하얀색 명찰을 받습니다.</p></article>
+<article class="card process-card"><div class="process-card-heading"><span class="process-step">3</span><h3>3층 이동</h3></div><p>총회 참석자는 안내에 따라 3층으로 이동합니다. <strong>참관인을 동반한 경우, 참관인은 1층에서 잠시 대기</strong>하시다가 3층에 별도로 마련할 총회 관람석으로 안내받으실 수 있도록 준비하겠습니다.</p></article>
+<article class="card process-card"><div class="process-card-heading"><span class="process-step">4</span><h3>의결 또는 참관</h3></div><p>의결권자는 안건별 의사를 표시하고, 참관인은 별도 좌석에서 참관합니다.</p></article>
 </div>
 </div>
 </section>
