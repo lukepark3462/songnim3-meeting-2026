@@ -623,6 +623,32 @@ body{font-size:17px;line-height:1.65;background:#faf8f2;color:var(--page-ink)}
   .hero-event-details .hero-actions{margin-top:16px}
 }
 </style>
+<style id="preparation-grouped-layout">
+#documents .prep-groups{display:grid;gap:22px}
+#documents .prep-group{border-radius:20px;padding:21px 22px 23px;border:1px solid #e4d7be;background:#fffdf9;box-shadow:0 12px 26px rgba(43,52,68,.08)}
+#documents .prep-direct{border-top:6px solid #248b77;background:linear-gradient(120deg,#e8f9f3,#fffdf9 60%)}
+#documents .prep-proxy{border-top:6px solid #296da8;background:linear-gradient(120deg,#eaf4fc,#fffdf9 60%)}
+#documents .prep-joint{border-top:6px solid #7959b2;background:linear-gradient(120deg,#f1edfc,#fffdf9 60%)}
+#documents .prep-group-head{display:flex;align-items:center;gap:15px;margin-bottom:17px}
+#documents .prep-number{flex:none;width:52px;height:52px;display:grid;place-items:center;border-radius:12px;background:#176356;color:#fff;font-size:23px;font-weight:950}
+#documents .prep-proxy .prep-number{background:#296da8}
+#documents .prep-joint .prep-number{background:#7150a9}
+#documents .prep-group-head h3{margin:0;font-size:clamp(22px,2.6vw,28px);line-height:1.27;color:#19344c;font-weight:950;letter-spacing:-.04em;word-break:keep-all}
+#documents .prep-group-head p{margin:5px 0 0;color:#52687e;font-size:16px;line-height:1.55;word-break:keep-all}
+#documents .prep-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
+#documents .prep-cards-one{grid-template-columns:1fr}
+#documents .prep-cards-two{grid-template-columns:repeat(2,minmax(0,1fr))}
+#documents .prep-card{border:1px solid #dfebee;background:#fff;border-radius:15px;padding:20px;min-width:0;box-shadow:0 4px 12px rgba(35,65,98,.045)}
+#documents .prep-card h4{margin:0 0 13px;color:#214b70;font-size:19px;line-height:1.35;letter-spacing:-.025em;font-weight:950;word-break:keep-all}
+#documents .prep-direct .prep-card h4{color:#146d58}
+#documents .prep-joint .prep-card h4{color:#6947a1}
+#documents .prep-card strong{display:block;color:#1e364a;font-size:18px;line-height:1.65;font-weight:900;word-break:keep-all}
+#documents .prep-card p{margin:12px 0 0;border-top:1px solid #edf1f4;padding-top:11px;color:#52677c;font-size:15px;line-height:1.64;word-break:keep-all}
+#documents .prep-notice{margin:18px 0 0;padding:16px 19px;border:1px solid #e4d1a4;border-radius:13px;background:#fff7e7;color:#75531e;font-size:15px;line-height:1.65;word-break:keep-all}
+#documents .prep-notice strong{color:#694410}
+@media(max-width:950px){#documents .prep-cards{grid-template-columns:1fr 1fr}#documents .prep-cards-one{grid-template-columns:1fr}}
+@media(max-width:670px){#documents .prep-groups{gap:16px}#documents .prep-group{padding:17px 15px 18px;border-radius:17px}#documents .prep-group-head{gap:11px}#documents .prep-number{width:43px;height:43px;font-size:18px}#documents .prep-group-head h3{font-size:22px}#documents .prep-group-head p{font-size:14px}#documents .prep-cards,#documents .prep-cards-two{grid-template-columns:1fr}#documents .prep-card{padding:16px}#documents .prep-card h4{font-size:18px}#documents .prep-card strong{font-size:17px}#documents .prep-card p{font-size:15px}#documents .prep-notice{font-size:14px;padding:13px}}
+</style>
 </head>
 <body>
 <header class="site-header">
@@ -691,7 +717,43 @@ body{font-size:17px;line-height:1.65;background:#faf8f2;color:var(--page-ink)}
 </div>
 </div>
 </section>
-<section class="section" id="documents"><div class="wrap"><div class="section-head"><div><span class="section-kicker">참석 준비물</span><h2>어떤 서류를 준비해야 하나요?</h2><p class="lead">본인·대리인·공동명의 여부에 따라 준비물이 다릅니다.</p></div></div><div class="document-grid"><article class="document-card"><h3>조합원 본인</h3><strong>신분증 원본</strong><p>1층에서 본인 확인 후 명찰을 받으세요.</p></article><article class="document-card"><h3>성년 가족 대리인</h3><strong>위임장 원본 · 대리인 신분증 · 가족관계증명서 등</strong><p>배우자·직계존비속·형제자매 등 법정 대리인 요건을 확인합니다.</p></article><article class="document-card"><h3>해외 거주 조합원 대리인</h3><strong>위임장 · 대리인 신분증 · 해외 거주 증빙</strong><p>법령·소집공고에 따른 추가서류는 미리 확인해 주세요.</p></article><article class="document-card"><h3>법인 조합원</h3><strong>법인등기사항증명서 · 대표자 신분증 / 대리 위임서류</strong><p>대표권과 위임권한 확인서류를 준비해 주세요.</p></article><article class="document-card"><h3>공동소유자</h3><strong>대표소유자 선임동의서 · 관련 신분증 사본</strong><p>대표소유자 지정과 증빙을 먼저 확인합니다.</p></article><article class="document-card"><h3>서면결의 제출</h3><strong>기표 완료된 서면결의서 · 신분증 사본</strong><p>안내문 기준 제출기한: 10월 16일 오후 1시까지.</p></article></div><p class="fact-caution">※ 대리인의 자격과 제출서류는 정식 소집공고·정관 및 관계 법령이 우선합니다. 서류가 부족하면 입장·투표 확인이 지연될 수 있습니다.</p></div></section><section class="section" id="process">
+<section class="section" id="documents">
+<div class="wrap">
+  <div class="section-head"><div>
+    <span class="section-kicker">현장 참석 준비서류</span>
+    <h2>참석 유형별로 준비서류를 확인하세요</h2>
+    <p class="lead">본인 직접 참석, 대리인 참석, 공동명의 여부에 따라 필요한 서류를 구분했습니다.</p>
+  </div></div>
+
+  <div class="prep-groups">
+    <section class="prep-group prep-direct" aria-labelledby="prep-direct-title">
+      <div class="prep-group-head"><span class="prep-number">01</span><div><h3 id="prep-direct-title">본인 직접 참석 시</h3><p>조합원 본인이 총회장에 오는 경우</p></div></div>
+      <div class="prep-cards prep-cards-one">
+        <article class="prep-card"><h4>조합원 본인</h4><strong>신분증 원본</strong><p>1층 접수대에서 본인 확인 후 명찰을 수령해 주세요.</p></article>
+      </div>
+    </section>
+
+    <section class="prep-group prep-proxy" aria-labelledby="prep-proxy-title">
+      <div class="prep-group-head"><span class="prep-number">02</span><div><h3 id="prep-proxy-title">대리인 참석 시</h3><p>조합원이 직접 참석하지 못하고 다른 사람이 대신 오는 경우</p></div></div>
+      <div class="prep-cards">
+        <article class="prep-card"><h4>성년 가족 대리인</h4><strong>위임장 원본<br/>대리인 신분증<br/>가족관계증명서 등</strong><p>배우자·부모·자녀·형제자매 등 대리인 자격을 증명할 서류를 준비해 주세요.</p></article>
+        <article class="prep-card"><h4>해외 거주 조합원 대리인</h4><strong>위임장<br/>대리인 신분증<br/>해외 거주 증빙서류</strong><p>해외 거주 사실과 대리 권한을 확인할 추가서류는 소집공고 기준으로 준비해 주세요.</p></article>
+        <article class="prep-card"><h4>법인 조합원 대표자·대리인</h4><strong>법인등기사항증명서<br/>대표자 신분증 또는 대리인 신분증<br/>대리 참석 시 위임서류</strong><p>법인 대표권과 위임 권한을 확인할 수 있어야 합니다.</p></article>
+      </div>
+    </section>
+
+    <section class="prep-group prep-joint" aria-labelledby="prep-joint-title">
+      <div class="prep-group-head"><span class="prep-number">03</span><div><h3 id="prep-joint-title">공동명의·대표조합원 지정 시</h3><p>한 부동산을 공동소유하여 대표조합원 지정이 필요한 경우</p></div></div>
+      <div class="prep-cards prep-cards-two">
+        <article class="prep-card"><h4>대표조합원이 직접 참석</h4><strong>대표조합원 선임동의서<br/>관련 신분증 사본<br/>대표조합원 신분증 원본</strong><p>공동소유자 사이의 대표자 지정 여부를 먼저 확인해 주세요.</p></article>
+        <article class="prep-card"><h4>대표조합원 대신 대리인 참석</h4><strong>공동명의 대표자 확인서류<br/>대리인 참석 서류 추가</strong><p>대표조합원 지정서류와 위 <b>대리인 참석 요건</b>을 함께 확인해 주세요.</p></article>
+      </div>
+    </section>
+  </div>
+  <p class="prep-notice">※ 위 내용은 준비를 돕기 위한 안내입니다. 실제 인정되는 대리인 자격·대표조합원 지정 방식·제출서류는 <strong>정식 소집공고, 조합 정관 및 관계 법령</strong>을 우선 확인해 주세요. 서류가 부족하면 입장·투표 확인이 지연될 수 있습니다.</p>
+</div>
+</section>
+<section class="section" id="process">
 <div class="wrap">
 <div class="section-head">
 <div>
