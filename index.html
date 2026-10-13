@@ -746,6 +746,84 @@ body{font-size:16px;line-height:1.65;background:#faf8f2;color:var(--page-ink)}
 }
 @media(prefers-reduced-motion:reduce){.hero .hero-actions .naver-map-link,#map .map-actions .naver-map-link{transition:none}}
 </style>
+
+<style id="site-muted-navy-theme">
+/* Unified navy / slate-blue / white theme. Keep Naver green and meaningful warnings red. */
+:root{
+ --tone-ink:#1a3349;
+ --tone-navy:#173b59;
+ --tone-blue:#2a638b;
+ --tone-muted:#526a7e;
+ --tone-soft:#edf3f7;
+ --tone-surface:#f7f9fc;
+ --tone-light:#fbfcfe;
+ --tone-border:#cbd9e4;
+ --tone-stroke:#9db5c7;
+}
+body{background:var(--tone-surface);color:var(--tone-ink)}
+.site-header{background:linear-gradient(110deg,#173b59,#214d70);border-bottom-color:#496d87}
+.site-header .nav a[aria-current="page"]{color:#173b59;background:#e5eef5;border-color:#e9f2fa;box-shadow:inset 0 -3px 0 #8dacbf,0 2px 9px rgba(4,23,41,.22)}
+.site-header .nav a:hover,.site-header .nav a:focus-visible{background:#f2f7fa;color:#173b59}
+.hero.hero-image-first{background:linear-gradient(180deg,#edf3f7,#f7f9fc)}
+.hero-event-details{background:#fff;border-color:var(--tone-border)}
+.hero .hero-place-name{background:#245f89;box-shadow:0 5px 13px rgba(26,58,86,.17)}
+.hero .hero-place-floor{background:#edf4f9;border-color:#bfd1df;color:#214f72}
+.hero-date-row{color:var(--tone-navy)}
+.hero-date-row .hero-mini-label{background:#e7eef4;color:#385873}
+#badges,#process,#issues,#map{background:linear-gradient(180deg,#edf3f7 0%,#f6f9fb 100%);border-top:5px solid var(--tone-stroke)}
+#documents,#agenda,#columns{background:linear-gradient(180deg,#f8fafc 0%,#edf3f7 100%);border-top:5px solid var(--tone-stroke)}
+#facts{background:linear-gradient(180deg,#e8f0f6,#f3f7fa);border-top:5px solid #7f9eb5}
+#facts h2,#facts .section p.lead{color:var(--tone-ink)}
+#facts .facts-attribution{color:#556f84}
+#closing-note{background:#17364e;border-top:5px solid #829eaf}
+#closing-note .closing{background:linear-gradient(120deg,#224760,#2b536d);border-color:#4b6a7e}
+#badges .section-kicker,#documents .section-kicker,#process .section-kicker,
+#agenda .section-kicker,#issues .section-kicker,#facts .section-kicker,
+#columns .section-kicker,#map .section-kicker{
+ background:#deeaf3;color:#234d6d;border:1px solid #cadbe8;
+}
+#badges .badge-card,#process .process-card{border-top:4px solid #5b849f}
+#badges .badge-card.badge-companion{border-top:4px solid #7a8d9f;background:#fff}
+#badges .badge-chip.green{background:#e4f2ed;color:#23614f}
+#badges .badge-chip.orange{background:#fbf0e1;color:#865d26}
+#documents .prep-group{border:1px solid #d3dfe8;background:linear-gradient(135deg,#eef4f8,#fff 72%);box-shadow:0 10px 22px rgba(25,55,80,.06)}
+#documents .prep-direct,#documents .prep-proxy,#documents .prep-joint{border-top:4px solid #5b849f;background:linear-gradient(125deg,#edf4f8,#fff 74%)}
+#documents .prep-number,#documents .prep-proxy .prep-number,#documents .prep-joint .prep-number{background:#2c6288}
+#documents .prep-direct .prep-card h4,#documents .prep-joint .prep-card h4{color:#245678}
+#documents .prep-card{border-color:#d9e4ec}
+#documents .prep-notice{background:#f1f5f8;border-color:#d2e0ea;color:#435d70}
+#documents .prep-notice strong{color:#254f6d}
+#agenda .agenda-combined-head{background:linear-gradient(110deg,#183c5a,#2a5778)}
+#agenda .agenda-number{background:#376e95}
+#agenda .agenda-summary strong{background:#2a587b;border-color:#2a587b}
+#issues .issue-tile{border-color:#cfdee8}
+#issues .tile-top{background:linear-gradient(110deg,#183c5a,#285674)}
+#issues .tile-num{background:#397095}
+#issues .issue-line.issue-q{background:#e8f1f7;border-color:#c9dce9}
+#issues .issue-q .issue-label{background:#2a658d}
+#issues .issue-q p{color:#214a68}
+#issues .issue-line.issue-claim{background:#f6f8fa;border-color:#dfe7ed}
+#issues .issue-claim .issue-label{background:#dfe8ee;color:#3e5668}
+#issues .issue-line.issue-point{background:#edf3f7;border-color:#cbdce8}
+#issues .issue-point .issue-label{background:#436f8b;color:#fff}
+#issues .issue-point p{color:#294b61}
+#facts .fact-tile{border-color:#ccdae5}
+#facts .fact-question-bar{background:linear-gradient(110deg,#173b59,#234e6b)}
+#facts .fact-no{background:linear-gradient(145deg,#2b688f,#214f73)}
+#facts .fact-key-answer strong{color:#b53342}
+#columns .column-card{border-color:#d0dce6}
+#columns .column-zoom{background:#e8f1f7;border-color:#c7d9e6;color:#255b7e}
+#map .map-photo{background:#eaf1f6;border-color:#ccdae5}
+#map .alert{background:#fff3f3;border-color:#e7c9cf;color:#923d47}
+#map .map-info h3{color:#1e4968}
+.mobile-quick{background:rgba(250,252,254,.97);border-top-color:#cbd9e4}
+.mobile-quick a:first-child{background:#2a6289}
+.mobile-quick a:last-child{background:#e5eff5;color:#285574}
+@media(prefers-contrast:more){
+ #issues .issue-line{border-color:#829bad}
+ #facts .fact-question-bar,#issues .tile-top{background:#143854}
+}
+</style>
 </head>
 <body>
 <header class="site-header">
@@ -956,7 +1034,7 @@ body{font-size:16px;line-height:1.65;background:#faf8f2;color:var(--page-ink)}
 <div>
 <span class="section-kicker">칼럼 모아보기</span>
 <h2>비대위 칼럼 · 입장자료</h2>
-<p class="lead">비대위가 현 상황을 해석하고 주요 논란을 비판적으로 살펴본 칼럼과 입장자료입니다.</p>
+<p class="lead">현 상황을 해석하고 주요 논란을 비판적으로 살펴본 칼럼입니다.</p>
 </div>
 </div>
 <div class="columns-grid">
