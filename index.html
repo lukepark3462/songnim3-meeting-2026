@@ -888,7 +888,20 @@ body{background:var(--tone-surface);color:var(--tone-ink)}
   .hero .hero-actions a.button.documents-cta {transition:none}
 }
 </style>
-</head>
+<style id="mobile-shortcut-button-design">
+.mobile-quick{gap:10px;padding:11px 12px calc(11px + env(safe-area-inset-bottom));background:rgba(247,250,252,.98);border-top:1px solid #b5c9d9;box-shadow:0 -7px 23px rgba(12,43,69,.16)}
+.mobile-quick a.mobile-quick-action{display:flex;align-items:center;justify-content:center;gap:9px;flex:1 1 0;min-width:0;min-height:56px;padding:9px 10px;border-radius:14px;border:2px solid #173d5b;border-bottom-width:4px;box-shadow:0 4px 9px rgba(22,54,79,.17);font-size:16px;font-weight:950;letter-spacing:-.03em;line-height:1.25;text-decoration:none;white-space:nowrap;transition:transform .12s ease,box-shadow .12s ease}
+.mobile-quick a.mobile-quick-agenda{background:#245b80;color:#fff;border-color:#173d5b}
+.mobile-quick a.mobile-quick-map{background:#e4eff7;color:#16466c;border-color:#8baac1}
+.mobile-quick .mobile-quick-icon{width:25px;height:25px;flex:0 0 25px;display:grid;place-items:center;border-radius:6px;background:rgba(255,255,255,.15)}
+.mobile-quick .mobile-quick-map .mobile-quick-icon{background:#cadeee}
+.mobile-quick .mobile-quick-icon svg{display:block;width:21px;height:21px}
+.mobile-quick .mobile-quick-arrow{font-size:24px;font-weight:900;line-height:1;margin-left:auto}
+.mobile-quick a.mobile-quick-action:active{transform:translateY(2px);box-shadow:0 2px 4px rgba(22,54,79,.16)}
+.mobile-quick a.mobile-quick-action:focus-visible{outline:3px solid #1680b3;outline-offset:3px}
+@media(max-width:370px){.mobile-quick{gap:7px;padding-inline:8px}.mobile-quick a.mobile-quick-action{font-size:14px;gap:5px;padding:8px 6px;min-height:53px}.mobile-quick .mobile-quick-icon{width:22px;height:22px;flex-basis:22px}.mobile-quick .mobile-quick-icon svg{width:19px;height:19px}}
+@media(prefers-reduced-motion:reduce){.mobile-quick a.mobile-quick-action{transition:none}}
+</style></head>
 <body>
 <header class="site-header">
 <div class="wrap header-inner">
@@ -1150,10 +1163,7 @@ body{background:var(--tone-surface);color:var(--tone-ink)}
 <div class="wrap footer-box">송림3지구 조합원 비상대책위원회 · 2026년 10월 13일 기준 안내자료. 임원별 해임사유와 조합원 의결권 인정은 정식 소집공고, 조합 정관 및 관계 법령을 기준으로 확인하시기 바랍니다.</div>
 </footer>
 </main>
-<div class="mobile-quick">
-<a href="#agenda">해임안건</a>
-<a href="#map">오시는길</a>
-</div>
+<nav class="mobile-quick" aria-label="화면 하단 바로가기"><a class="mobile-quick-action mobile-quick-agenda" href="#agenda" aria-label="해임안건 바로가기"><span class="mobile-quick-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="5" width="14" height="16" rx="2"/><path d="M9 3h6v4H9zM9 12h6M9 16h6"/></svg></span><span>해임안건</span><span class="mobile-quick-arrow" aria-hidden="true">›</span></a><a class="mobile-quick-action mobile-quick-map" href="#map" aria-label="오시는 길 바로가기"><span class="mobile-quick-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 5.25-8 11-8 11S4 15.25 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span>오시는 길</span><span class="mobile-quick-arrow" aria-hidden="true">›</span></a></nav>
 <dialog aria-label="칼럼 사진 확대" id="column-dialog"><div class="dialog-actions"><button id="column-close" type="button">닫기 ✕</button></div><img alt="선택한 칼럼 확대 이미지" id="column-view"/></dialog><script>
 (function(){
   const d=document.getElementById('column-dialog');
