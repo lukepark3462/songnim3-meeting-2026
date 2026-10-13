@@ -552,6 +552,14 @@ body{font-size:17px;line-height:1.65;background:#faf8f2;color:var(--page-ink)}
 }
 @media(max-width:360px){.site-header .header-title{font-size:16px}.hero-card .event-title{font-size:20px}.hero-date{font-size:18px}.paper-lead span{font-size:23px}.fact-question-bar h3{font-size:16px}}
 </style>
+
+<style id="venue-photo-layout">
+#map .map-card{align-items:stretch}
+#map .map-photo{margin:0;min-width:0;border-radius:18px;overflow:hidden;border:1px solid #b7d3c3;background:#e9f2ed;display:flex;align-items:center;justify-content:center}
+#map .map-photo img{display:block;width:100%;height:100%;min-height:320px;max-height:590px;object-fit:contain;object-position:center}
+#map .map-actions .button{white-space:nowrap}
+@media(max-width:980px){#map .map-photo img{height:auto;min-height:0;max-height:540px}}
+</style>
 </head>
 <body>
 <header class="site-header">
@@ -717,13 +725,10 @@ body{font-size:17px;line-height:1.65;background:#faf8f2;color:var(--page-ink)}
 <div class="alert">주의: 천광교회가 아니라 제물포구주민행복센터입니다.</div>
 <div class="map-actions">
 <a class="button primary" href="https://map.naver.com/p/search/%EC%9D%B8%EC%B2%9C%20%EC%A0%9C%EB%AC%BC%ED%8F%AC%EA%B5%AC%20%EC%97%BC%EC%A0%84%EB%A1%9C40%EB%B2%88%EA%B8%B8%2070" rel="noopener noreferrer" target="_blank">네이버 지도 열기</a>
-<a class="button secondary" href="https://map.naver.com/p/search/%EC%A0%9C%EB%AC%BC%ED%8F%AC%EA%B5%AC%EC%A3%BC%EB%AF%BC%ED%96%89%EB%B3%B5%EC%84%BC%ED%84%B0" rel="noopener noreferrer" target="_blank">시설명으로 찾기</a>
+
 </div>
 </div>
-<div class="map-mini">
-<strong>송림3지구 단지 기준<br/>도보 약 10분</strong>
-<p>총회장에 오실 때는 장소를 꼭 다시 확인해 주세요.</p>
-</div>
+<figure class="map-photo"><img src="assets/meeting-venue-photo.webp" alt="제물포구주민행복센터 건물 외관과 진입로 및 주차장 사진" loading="lazy" decoding="async"/></figure>
 </div>
 </div>
 </section>
