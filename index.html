@@ -713,6 +713,39 @@ body{font-size:16px;line-height:1.65;background:#faf8f2;color:var(--page-ink)}
 #badges .badge-card.badge-companion p strong{color:#193a58;font-weight:900}
 #process .process-card p strong{color:#1b5781;font-weight:900}
 </style>
+
+<style id="naver-branded-map-buttons">
+/* Naver brand monogram shape, green map link buttons. */
+.hero .hero-actions .naver-map-link,
+#map .map-actions .naver-map-link{
+ display:inline-flex;align-items:center;justify-content:center;gap:11px;
+ padding:9px 17px 9px 11px;min-height:54px;
+ background:linear-gradient(115deg,#03c75a 0%,#04ae51 100%);color:#fff;
+ border:1px solid #08a64d;border-radius:14px;
+ box-shadow:0 7px 16px rgba(3,150,74,.21);
+ font-weight:900;text-decoration:none;white-space:nowrap;
+ transition:transform .16s ease,box-shadow .16s ease,filter .16s ease;
+}
+.hero .hero-actions .naver-map-link:hover,
+#map .map-actions .naver-map-link:hover{
+ background:linear-gradient(115deg,#00b752,#028e42);
+ filter:saturate(1.03);
+ box-shadow:0 10px 19px rgba(3,150,74,.27);
+ transform:translateY(-1px);
+}
+.hero .hero-actions .naver-map-link:focus-visible,
+#map .map-actions .naver-map-link:focus-visible{outline:3px solid #14628b;outline-offset:3px}
+.naver-map-link .naver-brand-icon{display:grid;place-items:center;flex:0 0 33px;width:33px;height:33px;border-radius:9px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.24);color:#fff}
+.naver-map-link .naver-brand-icon svg{display:block;width:20px;height:20px;flex:none}
+.naver-map-link .naver-map-text{display:inline-block;white-space:nowrap;letter-spacing:-.035em}
+.naver-map-link .naver-map-arrow{display:inline-block;margin-left:1px;font-size:17px;line-height:1;opacity:.92}
+@media(max-width:480px){
+ .hero .hero-actions .naver-map-link,#map .map-actions .naver-map-link{gap:9px;padding:8px 12px 8px 9px}
+ .naver-map-link .naver-brand-icon{flex-basis:30px;width:30px;height:30px;border-radius:7px}
+ .naver-map-link .naver-brand-icon svg{width:18px;height:18px}
+}
+@media(prefers-reduced-motion:reduce){.hero .hero-actions .naver-map-link,#map .map-actions .naver-map-link{transition:none}}
+</style>
 </head>
 <body>
 <header class="site-header">
@@ -745,7 +778,7 @@ body{font-size:16px;line-height:1.65;background:#faf8f2;color:var(--page-ink)}
  <div class="hero-place"><strong class="hero-place-name">제물포구주민행복센터</strong><span class="hero-place-floor">3층 대강당</span></div>
  <div class="hero-sub">옛 동구주민행복센터 · 백병원 바로 옆</div>
  <div class="hero-important" role="note"><span class="hero-important-label">주요 사항</span><strong class="hero-important-text">천광교회 아닙니다.</strong></div>
- <div class="hero-actions"><a class="button primary" href="https://map.naver.com/p/search/%EC%9D%B8%EC%B2%9C%20%EC%A0%9C%EB%AC%BC%ED%8F%AC%EA%B5%AC%20%EC%97%BC%EC%A0%84%EB%A1%9C40%EB%B2%88%EA%B8%B8%2070" rel="noopener noreferrer" target="_blank">네이버 지도 열기 ↗</a><a class="button secondary" href="#documents">참석 준비물 확인</a></div>
+ <div class="hero-actions"><a class="button primary naver-map-link" href="https://map.naver.com/p/search/%EC%9D%B8%EC%B2%9C%20%EC%A0%9C%EB%AC%BC%ED%8F%AC%EA%B5%AC%20%EC%97%BC%EC%A0%84%EB%A1%9C40%EB%B2%88%EA%B8%B8%2070" rel="noopener noreferrer" target="_blank"><span class="naver-brand-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" focusable="false" aria-hidden="true"><path d="M16.273 12.845 7.376 0H0v24h7.726V11.156L16.624 24H24V0h-7.727v12.845Z"/></svg></span><span class="naver-map-text">네이버 지도 열기</span><span class="naver-map-arrow" aria-hidden="true">↗</span></a><a class="button secondary" href="#documents">참석 준비물 확인</a></div>
 </div>
 </div>
 </section>
@@ -955,7 +988,7 @@ body{font-size:16px;line-height:1.65;background:#faf8f2;color:var(--page-ink)}
 <div class="map-line"><strong>참고</strong> · 옛 동구주민행복센터 / 백병원 옆</div>
 <div class="alert">주의: 천광교회가 아니라 제물포구주민행복센터입니다.</div>
 <div class="map-actions">
-<a class="button primary" href="https://map.naver.com/p/search/%EC%9D%B8%EC%B2%9C%20%EC%A0%9C%EB%AC%BC%ED%8F%AC%EA%B5%AC%20%EC%97%BC%EC%A0%84%EB%A1%9C40%EB%B2%88%EA%B8%B8%2070" rel="noopener noreferrer" target="_blank">네이버 지도 열기</a>
+<a class="button primary naver-map-link" href="https://map.naver.com/p/search/%EC%9D%B8%EC%B2%9C%20%EC%A0%9C%EB%AC%BC%ED%8F%AC%EA%B5%AC%20%EC%97%BC%EC%A0%84%EB%A1%9C40%EB%B2%88%EA%B8%B8%2070" rel="noopener noreferrer" target="_blank"><span class="naver-brand-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" focusable="false" aria-hidden="true"><path d="M16.273 12.845 7.376 0H0v24h7.726V11.156L16.624 24H24V0h-7.727v12.845Z"/></svg></span><span class="naver-map-text">네이버 지도 열기</span><span class="naver-map-arrow" aria-hidden="true">↗</span></a>
 
 </div>
 </div>
