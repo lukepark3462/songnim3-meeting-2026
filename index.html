@@ -1453,6 +1453,52 @@ footer,.footer-box{font-size:13px;line-height:1.6}
 }
 </style>
 
+<style id="single-compact-bottom-directions">
+/* Compact centered directions shortcut at the foot of mobile screens. */
+.mobile-quick{
+  justify-content:center;
+  align-items:center;
+  gap:0;
+  padding:6px 12px calc(6px + env(safe-area-inset-bottom));
+  background:rgba(248,251,253,.97);
+  border-top:1px solid #d0dde8;
+  box-shadow:0 -3px 13px rgba(21,56,82,.09);
+}
+.mobile-quick a.mobile-quick-action.mobile-quick-map{
+  display:inline-flex;
+  flex:0 1 260px;
+  width:min(100%,260px);
+  min-width:0;
+  min-height:43px;
+  padding:6px 15px;
+  gap:10px;
+  border-radius:11px;
+  border:1px solid #b8d1e2;
+  border-bottom:2px solid #92b1c7;
+  background:linear-gradient(180deg,#f5f9fc 0%,#e5f0f7 100%);
+  color:#1b4e70;
+  box-shadow:0 2px 6px rgba(28,64,94,.10);
+  font-size:15px;
+  font-weight:900;
+  line-height:1.25;
+  letter-spacing:-.02em;
+}
+.mobile-quick a.mobile-quick-action.mobile-quick-map .mobile-quick-icon{
+  display:grid;place-items:center;
+  flex:0 0 23px;width:23px;height:23px;
+  border-radius:6px;background:#dbeaf4;
+}
+.mobile-quick a.mobile-quick-action.mobile-quick-map .mobile-quick-icon svg{width:19px;height:19px}
+.mobile-quick a.mobile-quick-action.mobile-quick-map .mobile-quick-arrow{font-size:20px;line-height:1;margin-left:8px}
+.mobile-quick a.mobile-quick-action.mobile-quick-map:hover{background:#e0edf6}
+.mobile-quick a.mobile-quick-action.mobile-quick-map:focus-visible{outline:3px solid #328bb5;outline-offset:2px}
+@media(max-width:370px){
+ .mobile-quick{padding:6px 10px calc(6px + env(safe-area-inset-bottom))}
+ .mobile-quick a.mobile-quick-action.mobile-quick-map{
+   flex:0 1 235px;min-height:42px;font-size:14px;padding:6px 12px;
+ }
+}
+</style>
 </head>
 <body>
 <header class="site-header">
@@ -1691,7 +1737,7 @@ footer,.footer-box{font-size:13px;line-height:1.6}
 <div class="wrap footer-box">송림3지구 조합원 비상대책위원회 · 2026년 10월 13일 기준 안내자료. 임원별 해임사유와 조합원 의결권 인정은 정식 소집공고, 조합 정관 및 관계 법령을 기준으로 확인하시기 바랍니다.</div>
 </footer>
 </main>
-<nav class="mobile-quick" aria-label="화면 하단 바로가기"><a class="mobile-quick-action mobile-quick-agenda" href="#agenda" aria-label="해임안건 바로가기"><span class="mobile-quick-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="5" width="14" height="16" rx="2"/><path d="M9 3h6v4H9zM9 12h6M9 16h6"/></svg></span><span>해임안건</span><span class="mobile-quick-arrow" aria-hidden="true">›</span></a><a class="mobile-quick-action mobile-quick-map" href="#map" aria-label="오시는 길 바로가기"><span class="mobile-quick-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 5.25-8 11-8 11S4 15.25 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span>오시는 길</span><span class="mobile-quick-arrow" aria-hidden="true">›</span></a></nav>
+<nav class="mobile-quick" aria-label="화면 하단 오시는 길 바로가기"><a class="mobile-quick-action mobile-quick-map" href="#map" aria-label="오시는 길 바로가기"><span class="mobile-quick-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 5.25-8 11-8 11S4 15.25 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span>오시는 길</span><span class="mobile-quick-arrow" aria-hidden="true">›</span></a></nav>
 <dialog aria-label="칼럼 사진 확대" id="column-dialog"><div class="dialog-actions"><button id="column-close" type="button">닫기 ✕</button></div><img alt="선택한 칼럼 확대 이미지" id="column-view"/></dialog><script>
 (function(){
   const d=document.getElementById('column-dialog');
